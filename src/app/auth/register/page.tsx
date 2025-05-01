@@ -55,10 +55,15 @@ const RegisterSchema = z
             }
         
             // Add username to 'profiles' table
-        const { error: profileError } = await supabase.from('profiles').upsert({
-                id:signUpData.user.id,      // 👈 THIS is where you're setting the user's ID
+            if (!signUpData.user) {
+                console.error("Sign up failed, user object is null");
+                return;
+                }
+                
+            const { error: profileError } = await supabase.from("profiles").upsert({
+                id: signUpData.user.id,
                 fullname: data.fullname,
-            })
+                });
         
         if (profileError) {
             setError(profileError.message)
