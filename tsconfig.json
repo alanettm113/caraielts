@@ -25,7 +25,8 @@
     ],
     "paths": {
     "@/supabase": ["./src/supabase/supabase"],
-    "@/components/*": ["./src/components/*"]
+    "@/components/*": ["./src/components/*"],
+    "@/lib/*": ["src/lib/*"]
   }
   },
   "include": [

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@supabase/supabase-js'
-import { Timer } from 'lucide-react'
+
 
 // Create client
 const supabase = createClient(
