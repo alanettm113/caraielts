@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { supabase } from "@/supabase/supabase"; // adjust to your path
+import { supabase } from "@/supabase";// adjust to your path
 
 export default function AuthHandler() {
     useEffect(() => {

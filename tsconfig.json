@@ -24,9 +24,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/supabase/*": ["./supabase/*"]
-    }
+    "@/supabase": ["./src/supabase/supabase"],
+    "@/components/*": ["./src/components/*"]
+  }
   },
   "include": [
     "next-env.d.ts",
