@@ -1,0 +1,11 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "module": "commonjs", // or "NodeNext" if using ESM
+      "moduleResolution": "nodenext", // or "nodenext" for ESM
+      "noEmit": false, // Allow emitting JS for debugging (optional)
+      "outDir": "./dist" // Optional: Output compiled JS for debugging
+    },
+    "include": ["src/scripts/**/*.ts"],
+    "exclude": ["node_modules"]
+}

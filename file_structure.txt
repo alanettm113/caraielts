@@ -1,0 +1,64 @@
+IELTS-CARA-APP/
+├── ielts-web/
+│   ├── .next/
+│   ├── node_modules/
+│   ├── public/
+│   │   ├── db/
+│   │   │   └── db.ts
+│   │   └── tests/
+│   │       └── tests.ts
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── admin/
+│   │   │   │   └── page.tsx
+│   │   │   ├── auth/
+│   │   │   │   ├── login/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── register/
+│   │   │   │       └── page.tsx
+│   │   │   ├── dashboard/
+│   │   │   │   └── page.tsx
+│   │   │   ├── ielts/
+│   │   │   │   ├── listening/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── reading/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── speaking/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── writing/
+│   │   │   │       └── page.tsx
+│   │   │   ├── favicon.ico
+│   │   │   ├── globals.css
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   ├── components/
+│   │   │   ├── auth-wizard/
+│   │   │   ├── layout/
+│   │   │   ├── shared/
+│   │   │   ├── test/
+│   │   │   └── ui/
+│   │   │       ├── button.tsx
+│   │   │       ├── card.tsx
+│   │   │       ├── resizable.tsx
+│   │   │       ├── separator.tsx
+│   │   │       └── textarea.tsx
+│   │   ├── lib/
+│   │   │   ├── constants/
+│   │   │   ├── graphQL/
+│   │   │   ├── supabase/
+│   │   │   └── validators/
+│   │   └── utils.ts
+│   ├── .env.local
+│   ├── .gitignore
+│   ├── components.json
+│   ├── eslint.config.mjs
+│   ├── file_structure.txt
+│   ├── middleware.ts
+│   ├── next-env.d.ts
+│   ├── next.config.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.mjs
+│   ├── README.md
+│   ├── tailwind.config.mjs
+│   └── tsconfig.json
