@@ -7,16 +7,13 @@ import {
     PanelResizeHandle as PanelResizeHandlePrimitive,
     Panel as ResizablePanelPrimitive,
     PanelGroup as ResizablePanelGroupPrimitive,
-    } from 'react-resizable-panels'
-    import { cn } from '@/lib/utils'
+    ImperativePanelGroupHandle,
+} from 'react-resizable-panels'
+import { cn } from '@/lib/utils'
 
-    // Explicit ref types
-    type PanelGroupRef = HTMLDivElement
-    type PanelRef = HTMLDivElement
-    type PanelResizeHandleRef = HTMLDivElement
-
+// ✅ FIX: Use correct ref type for ResizablePanelGroup
     const ResizablePanelGroup = React.forwardRef<
-    PanelGroupRef,
+    ImperativePanelGroupHandle,
     React.ComponentPropsWithoutRef<typeof ResizablePanelGroupPrimitive>
     >(({ className, ...props }, ref) => (
     <ResizablePanelGroupPrimitive
@@ -27,12 +24,13 @@ import {
     ))
     ResizablePanelGroup.displayName = 'ResizablePanelGroup'
 
+    // ✅ These are fine, still div refs
     const ResizablePanel = React.forwardRef<
-    PanelRef,
+    HTMLDivElement,
     React.ComponentPropsWithoutRef<typeof ResizablePanelPrimitive>
     >(({ className, ...props }, ref) => (
     <ResizablePanelPrimitive
-        ref={ref}
+        
         className={cn('h-full', className)}
         {...props}
     />
@@ -40,18 +38,18 @@ import {
     ResizablePanel.displayName = 'ResizablePanel'
 
     const ResizableHandle = React.forwardRef<
-    PanelResizeHandleRef,
+    HTMLDivElement,
     React.ComponentPropsWithoutRef<typeof PanelResizeHandlePrimitive>
     >(({ className, ...props }, ref) => (
     <PanelResizeHandlePrimitive
-        ref={ref}
+        
         className={cn(
         'relative flex w-px items-center justify-center bg-border after:absolute after:h-4 after:w-1 after:rounded-full after:bg-muted',
         className
         )}
         {...props}
     />
-))
-ResizableHandle.displayName = 'ResizableHandle'
+    ))
+    ResizableHandle.displayName = 'ResizableHandle'
 
 export { ResizablePanelGroup, ResizablePanel, ResizableHandle }
