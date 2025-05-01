@@ -17,7 +17,6 @@ import { cn } from '@/lib/utils'
     React.ComponentPropsWithoutRef<typeof ResizablePanelGroupPrimitive>
     >(({ className, ...props }, ref) => (
     <ResizablePanelGroupPrimitive
-        ref={ref}
         className={cn('flex w-full', className)}
         {...props}
     />
