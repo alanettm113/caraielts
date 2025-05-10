@@ -1,10 +1,16 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "ESNext",
@@ -15,17 +21,25 @@
     "incremental": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    //"types": ["node"],
     "baseUrl": "./",
+    //"typeRoots": ["./node_modules/@types", "./src/types"],
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-    "@/supabase": ["./src/supabase/supabase"],
-    "@/components/*": ["./src/components/*"],
-    "@/lib/*": ["src/lib/*"]
-  }
+      "@/supabase": [
+        "./src/supabase/supabase"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/lib/*": [
+        "src/lib/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
@@ -40,7 +54,9 @@
     "declarations.d.ts",
     "lib/**/*.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "ts-node": {
     "esm": true,
     "files": true,

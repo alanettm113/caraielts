@@ -9,6 +9,9 @@ const nextConfig = {
     config.resolve.alias['@'] = path.resolve(__dirname, 'src')
     return config
   },
+  images: {
+    domains: ['i.ibb.co'],
+  }
 }
 
 module.exports = nextConfig

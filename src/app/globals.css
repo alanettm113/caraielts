@@ -1,5 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,4 +128,119 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.hidden-focusable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.highlighted {
+  background-color: inherit; /* Use the color from the span */
+  padding: 0 2px;
+}
+
+
+.select-text {
+  user-select: text;
+}
+
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 50;
+}
+
+.sidebar {
+  width: 64px;
+  height: 100%;
+  background-color: #f9fafb;
+  border-right: 1px solid #e5e7eb;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidebar:hover {
+  width: 256px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar:hover nav {
+  opacity: 1;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: #fef3c7;
+  transform: translateX(4px);
+}
+
+.sidebar a.active {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.sidebar a i {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.sidebar a span {
+  white-space: nowrap;
+}
+
+.toggle-icon {
+  padding: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-icon:hover {
+  background-color: #e5e7eb;
+}
+
+main {
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 64px;
+}
+
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #F59E0B;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #F59E0B;
+}
+
+.toggle-checkbox {
+  transition: all 0.3s;
+}
+
+.toggle-label {
+  transition: background-color 0.3s;
 }

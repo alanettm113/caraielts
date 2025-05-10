@@ -9,7 +9,7 @@ IELTS-CARA-APP/
 │   │       └── tests.ts
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── admin/
+│   │   │   ├── forgot-password/
 │   │   │   │   └── page.tsx
 │   │   │   ├── auth/
 │   │   │   │   ├── login/

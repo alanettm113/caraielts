@@ -1,120 +1,110 @@
-// src/app/auth/login/page.tsx
-'use client'
-import Link from 'next/link'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
-import { supabase } from "@/supabase"
-import { useState } from 'react'
+'use client';
 
-
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/supabase';
+import { useState } from 'react';
+import { Mail, Lock } from 'lucide-react';
+import Image from 'next/image';
 
 const LoginSchema = z.object({
-    email: z.string().email(),
+    email: z.string().email('Invalid email'),
     password: z.string().min(6, 'Password must be at least 6 characters'),
-})
+    });
 
-type LoginData = z.infer<typeof LoginSchema>
+type LoginData = z.infer<typeof LoginSchema>;
 
 export default function LoginPage() {
-    const router = useRouter()
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
+    const router = useRouter();
+    const [error, setError] = useState('');
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<LoginData>({
-        resolver: zodResolver(LoginSchema),
-    })
-    const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault()
-    
-    const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-            })
-        
-            if (error) {
-            setError(error.message)
-            } else {
-            router.push('/dashboard') // or wherever your app goes post-login
-            }
-        }
-
+    } = useForm<LoginData>({ resolver: zodResolver(LoginSchema) });
 
     const onSubmit = async (data: LoginData) => {
-        setError('')
+        setError('');
         const { error } = await supabase.auth.signInWithPassword({
         email: data.email,
         password: data.password,
-        })
+        });
 
         if (error) {
-        setError(error.message)
+        if (error.message.includes('Invalid login credentials')) {
+            setError('Password is incorrect');
+        } else if (error.message.includes('User not found')) {
+            setError('User not found');
         } else {
-        router.push('/dashboard')
+            setError(error.message);
         }
-    }
-
-    const handleGoogleSignIn = async () => {
-        await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        })
-    }
+        } else {
+        router.push('/dashboard');
+        }
+    };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen px-4">
-        <div className="w-full max-w-md p-6 rounded-2xl shadow-lg bg-white">
-            <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
+        <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+        <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-sm border border-gray-200">
+            <div className="flex justify-center mb-6">
+            <Image src="/images/CARA_IELTS_Logo.jpg" alt="CARA IELTS Logo" width={64} height={64} />
+            </div>
+            <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
+                <label htmlFor="email" className="block text-sm font-semibold mb-1 text-gray-700">
+                Email
+                </label>
+                <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
+                <Mail className="w-4 h-4 text-gray-500 mr-2" />
                 <input
-                type="email"
-                placeholder="Email"
-                {...register('email')}
-                className="w-full px-4 py-2 border rounded-xl"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    {...register('email')}
+                    className="w-full outline-none"
                 />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+                </div>
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
             </div>
             <div>
+                <label htmlFor="password" className="block text-sm font-semibold mb-1 text-gray-700">
+                Password
+                </label>
+                <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
+                <Lock className="w-4 h-4 text-gray-500 mr-2" />
                 <input
-                type="password"
-                placeholder="Password"
-                {...register('password')}
-                className="w-full px-4 py-2 border rounded-xl"
-                onChange={(e) => setPassword(e.target.value)}
-                required/>
-                {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    {...register('password')}
+                    className="w-full outline-none"
+                />
+                </div>
+                {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
             </div>
-            {error && <p className="text-red-600">{error}</p>}
-            <button type="submit" className="w-full bg-orange-500 text-white py-2 rounded-xl hover:bg-orange-600 transition">
+            {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
+            <button
+                type="submit"
+                className="w-full bg-amber-500 text-white py-2 rounded-md hover:bg-amber-600 transition"
+            >
                 Sign In
             </button>
             </form>
-
-            <div className="my-4 text-center">or</div>
-
-            <button
-            onClick={handleGoogleSignIn}
-            className="w-full border border-gray-300 py-2 rounded-xl hover:bg-gray-100 transition"
-            >
-            Continue with Google
-            </button>
-            {/* your login form here */}
-            <p className="mt-4">
-            Don’t have an account?{' '}
-            <Link href="/auth/register" className="text-blue-500 underline">                Register here!
-                </Link>
-            </p>
+            <div className="text-center text-sm mt-4">
+            <Link href="/auth/forgot-password" className="text-amber-500 hover:underline">
+                Forgot Password?
+            </Link>
+            <span className="mx-2">|</span>
+            <Link href="/auth/register" className="text-amber-500 hover:underline">
+                Register
+            </Link>
+            </div>
         </div>
         </div>
-        
-    )
+    );
 }

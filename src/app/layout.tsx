@@ -1,24 +1,22 @@
+import type { Metadata } from 'next';
+import './globals.css';
 
-import "./globals.css";
-import { Roboto } from "next/font/google";
-const roboto = Roboto({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-});
+export const metadata: Metadata = {
+  title: 'CARA IELTS Dashboard',
+  description: 'IELTS preparation dashboard',
+  icons: {
+    icon: '/ci-icon.png',
+  },
+};
 
-  export const metadata = {
-    title: "IELTS Web App",
-    description: "Practice IELTS Reading, Listening, and Writing tests",
-  };
-
-  export default function RootLayout({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className="bg-gray-50 text-gray-900">{children}</body>
     </html>
   );
 }
