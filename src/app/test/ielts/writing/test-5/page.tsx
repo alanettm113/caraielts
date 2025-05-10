@@ -23,7 +23,7 @@ export default function WritingTestPage() {
     const [note2, setNote2] = useState('');
     const [showNote1, setShowNote1] = useState(false);
     const [showNote2, setShowNote2] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(60 * 60); // 60 minutes
+    const [timeLeft, setTimeLeft] = useState(40 * 60); // 60 minutes
     const [timerExpired, setTimerExpired] = useState(false); // Track timer expiry
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [started, setStarted] = useState(false);
@@ -169,7 +169,7 @@ export default function WritingTestPage() {
             title: 'WRITING TASK 1',
             instruction: (
             <div>
-                <p className="pace-y-2"> You should spend about 20 minutes on this task.</p>
+                <p className="pace-y-2"> You should spend about 40 minutes on this task.</p>
                 <p className="border px-4 py-2 bg-white font-semibold">
                 The graph shows the number of people taking part in 4 kinds of sports 
                 in a particular region between 1985 and 2005.</p>
@@ -193,7 +193,7 @@ export default function WritingTestPage() {
             title: 'WRITING TASK 2',
             instruction: (
             <div className="space-y-2">
-                <p>You should spend about 40 minutes on this task.</p>
+                <p>You should spend about .... minutes on this task.</p>
                 <p>Write about the following topic:</p>
                 <div className="border px-4 py-2 bg-white font-semibold italic">
                 <p>
