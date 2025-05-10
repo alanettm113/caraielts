@@ -195,7 +195,7 @@ export default function WritingTestPage() {
             title: 'WRITING TASK 2',
             instruction: (
             <div className="space-y-2">
-                <p>You should spend about 20 minutes on this task.</p>
+                <p>You should spend about 40 minutes on this task.</p>
                 <p>Write about the following topic:</p>
                 <div className="border px-4 py-2 bg-white font-semibold italic">
                 <p>
