@@ -18,7 +18,7 @@ export default function ListeningTestPage() {
     }, [router]);
 
     const handleClick = (testId: string) => {
-        router.push(`/test/ielts/listening/${testId}`); // Updated route
+        router.push(`/tests/ielts/listening/${testId}`); // Updated route
     };
 
     return (
