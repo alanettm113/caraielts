@@ -418,7 +418,7 @@ const correctAnswers: string[] = [
 
 
 
-export default function ReadingTestPage({ testNumber = 1 }: { testNumber?: number }) {
+export default function ReadingTestPage({ testId = 1 }: { testId?: number }) {
   const router = useRouter();
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -436,7 +436,7 @@ export default function ReadingTestPage({ testNumber = 1 }: { testNumber?: numbe
 
   // Combine all questions for the test
   const testData = {
-    title: 'IELTS Reading Test ${testNumber}',
+    title: 'IELTS Reading Test ${testId}',
     passage1: passages[1],
     passage2: passages[2],
     passage3: passages[3],
@@ -553,7 +553,7 @@ export default function ReadingTestPage({ testNumber = 1 }: { testNumber?: numbe
       }
 
       // Use the dynamic test number
-      const testTitle = `IELTS READING TEST ${testNumber}`;
+      const testTitle = `IELTS READING TEST ${testId}`;
 
       // Header
       doc.setFontSize(14);
@@ -794,7 +794,7 @@ export default function ReadingTestPage({ testNumber = 1 }: { testNumber?: numbe
 
       {/* Header with Timer and Controls */}
       <header className="sticky top-0 z-30 flex items-center justify-between bg-orange-50 border-b px-5 py-2 shadow">
-        <h1 className="text-lg font-bold">IELTS Reading Test {testNumber}</h1>
+        <h1 className="text-lg font-bold">IELTS Reading Test {testId}</h1>
         
         {/* Timer */}
         <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-1">
