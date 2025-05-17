@@ -460,8 +460,8 @@ export default function ReadingTestPage() {
         const maxWidth = 400;
         let y = 20;
 
-        const testId = testData?.title?.split(' ').pop() || '1';
-        const testTitle = `IELTS READING TEST ${testId}`;
+        const testNumber = testData?.title?.split(' ').pop() || '1';
+        const testTitle = `IELTS READING TEST ${testNumber}`;
 
         // Header
         doc.setFontSize(14);

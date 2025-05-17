@@ -353,9 +353,10 @@ import dayjs from 'dayjs';
         ];
 
 // ------------------------- COMPONENT -------------------------
-export default function ReadingTestPage({ testId = 2 }: { testId?: number }) {
+export default function ReadingTestPage() {
     const router = useRouter();
     const rootRef = useRef<HTMLDivElement>(null);
+    const testId = 2
 
     // State management
     const [currentPassage, setCurrentPassage] = useState(1);
@@ -532,9 +533,9 @@ export default function ReadingTestPage({ testId = 2 }: { testId?: number }) {
 
         // Add band score to PDF
         //doc.text(`Band Score: ${band.toFixed(1)}`, margin, y); // Use band variable
-        y += 20;
-        doc.line(margin, y, 555, y);
-        y += 20;
+        //y += 20;
+        //doc.line(margin, y, 555, y);
+        //y += 20;
 
         // Render answers
         sortedQs.forEach((q) => {

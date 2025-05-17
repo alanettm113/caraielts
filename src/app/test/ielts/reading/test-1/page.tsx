@@ -418,9 +418,10 @@ const correctAnswers: string[] = [
 
 
 
-export default function ReadingTestPage({ testId = 1 }: { testId?: number }) {
+export default function ReadingTestPage() {
   const router = useRouter();
   const rootRef = useRef<HTMLDivElement>(null);
+  const testId = 1;
 
   // State management
   const [currentPassage, setCurrentPassage] = useState(1);

@@ -10,7 +10,7 @@ export default function ReadingTestPage() {
     const router = useRouter();
 
     const handleClick = (testId: string) => {
-        router.push(`/test/ielts/reading/${testId}`);
+        router.push(`/tests/ielts/reading/${testId}`);
     };
 
     useEffect(() => {
