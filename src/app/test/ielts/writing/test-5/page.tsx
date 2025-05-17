@@ -60,7 +60,6 @@ export default function WritingTestPage() {
 
     const formatTime = (sec: number) => {
         const m = String(Math.floor(sec / 60)).padStart(2, '0');
-        const s = String(sec % 60).padStart(2, '0');
         return `${m}`;
     };
 
@@ -97,7 +96,7 @@ export default function WritingTestPage() {
             }
 
             doc.setFontSize(14);
-            doc.text(`IELTS WRITING TEST ${testId.replace('test-', '')}`, 210, y, { align: 'center' });
+            doc.text(`IELTS WRITING TEST ${testId.replace('test-', '')}`, 290, y, { align: 'center' });
             y += 30;
             doc.setFontSize(12);
             doc.text(`Student: ${studentName}`, margin, y);
@@ -176,7 +175,7 @@ export default function WritingTestPage() {
                 <p className="text-md font-semibold"> Write at least 150 words. 
                 </p>
                 <img
-                    src="/images/Test5_Task1.png"
+                    src="/images/Writing_Test5_Task1.png"
                     alt="WRITING TASK1 IMAGE"
                     className="mt-4 w-full max-w-full h-auto border rounded shadow"
                 />

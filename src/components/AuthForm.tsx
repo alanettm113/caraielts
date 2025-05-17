@@ -28,7 +28,7 @@ interface AuthFormProps {
         <div className="flex items-center justify-center min-h-screen bg-gray-50">
         <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200 max-w-md w-full">
             <div className="flex justify-center mb-6">
-            <Image src="/ci-icon.png" alt="CARA IELTS Logo" width={64} height={64} />
+            <Image src="/images/CARA_IELTS_Logo.jpg" alt="CARA IELTS Logo" width={64} height={64} />
             </div>
             <h1 className="text-2xl font-bold text-center mb-6">
             {type === 'login' ? 'Đăng nhập' : type === 'register' ? 'Đăng ký' : 'Quên mật khẩu'}

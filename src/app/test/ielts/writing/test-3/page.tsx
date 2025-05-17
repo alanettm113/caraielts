@@ -97,7 +97,7 @@ export default function WritingTestPage() {
             }
 
             doc.setFontSize(14);
-            doc.text(`IELTS WRITING TEST ${testId.replace('test-', '')}`, 210, y, { align: 'center' });
+            doc.text(`IELTS WRITING TEST ${testId.replace('test-', '')}`, 290, y, { align: 'center' });
             y += 30;
             doc.setFontSize(12);
             doc.text(`Student: ${studentName}`, margin, y);

@@ -97,7 +97,7 @@ export default function WritingTestPage() {
             }
 
             doc.setFontSize(14);
-            doc.text(`IELTS WRITING TEST ${testId.replace('test-', '')}`, 210, y, { align: 'center' });
+            doc.text(`IELTS WRITING TEST ${testId.replace('test-', '')}`, 290, y, { align: 'center' });
             y += 30;
             doc.setFontSize(12);
             doc.text(`Student: ${studentName}`, margin, y);
@@ -177,7 +177,7 @@ export default function WritingTestPage() {
                 <p className="text-md font-semibold"> Write at least 150 words. 
                 </p>
                 <img
-                    src="/images/Test4_Task1.png"
+                    src="/images/Writing_Test4_Task1.png"
                     alt="WRITING TASK1 IMAGE"
                     className="mt-4 w-full max-w-full h-auto border rounded shadow"
                 />

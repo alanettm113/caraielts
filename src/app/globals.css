@@ -244,3 +244,61 @@ main {
 .toggle-label {
   transition: background-color 0.3s;
 }
+
+.reading-passage-header {
+  text-align: left;
+  color: #dc2626; /* Equivalent to Tailwind's text-red-600 */
+  font-weight: bold;
+  font-size: 1.125rem; /* Equivalent to text-lg */
+  margin-bottom: 16px; /* Equivalent to mb-4 */
+}
+.passage-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-bottom: 16px;
+}
+.paragraph {
+  margin-bottom: 16px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.passage-container {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Equivalent to space-y-2 */
+}
+.gap-fill-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Equivalent to space-x-2 */
+}
+.gap-fill-input {
+  border: 1px solid #d1d5db; /* Equivalent to border border-gray-300 */
+  border-radius: 9999px; /* Equivalent to rounded-full */
+  padding: 4px 12px; /* Equivalent to py-1 px-3 */
+  font-size: 0.875rem; /* Equivalent to text-sm */
+  width: 96px; /* Equivalent to w-24 */
+}
+
+.instructions-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Equivalent to space-y-1 */
+}
+
+

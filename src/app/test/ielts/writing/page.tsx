@@ -28,7 +28,9 @@ export default function WritingTestPage() {
             <h1 className="text-2xl font-bold mb-6">Writing Tests</h1>
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {['test-1', 'test-2', 'test-3', 'test-4', 'test-5'].map((id, index) => (
+                {['test-1', 'test-2', 'test-3', 'test-4', 'test-5',
+                    'test-6', 'test-7', 'test-8', 'test-9', 'test-10'
+                ].map((id, index) => (
                 <div
                     key={id}
                     onClick={() => handleClick(id)}

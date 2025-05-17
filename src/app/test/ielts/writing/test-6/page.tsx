@@ -14,7 +14,7 @@ import jsPDF from 'jspdf';
 
 export default function WritingTestPage() {
     const router = useRouter();
-    const testId = 'test-1';
+    const testId = 'test-6';
 
     const [currentTask, setCurrentTask] = useState<'task1' | 'task2'>('task1');
     const [task1, setTask1] = useState('');
@@ -170,14 +170,12 @@ export default function WritingTestPage() {
             <div>
                 <p className="pace-y-2"> You should spend about 20 minutes on this task.</p>
                 <p className="border px-4 py-2 bg-white font-semibold">
-                The diagram below shows the manufacturing process for making sugar from 
-                sugar cane. 
-                Summarize the information by selecting and reporting the main features, and 
-                make comparisons where relevant.  </p>
+                The diagrams below show a school library five years ago and now. 
+                Summarize the information by selecting and reporting the main features, and make comparisons where relevant.</p>
                 <p className="text-md font-semibold"> Write at least 150 words. 
                 </p>
                 <img
-                    src="/images/Writing_Test2_Task1.png"
+                    src="/images/Writing_Test6_Task1.png"
                     alt="WRITING TASK1 IMAGE"
                     className="mt-4 w-full max-w-full h-auto border rounded shadow"
                 />
@@ -194,15 +192,11 @@ export default function WritingTestPage() {
             title: 'WRITING TASK 2',
             instruction: (
             <div className="space-y-2">
-                <p>You should spend about 40 minutes on this task.</p>
-                <p>Write about the following topic:</p>
+                <p>You should spend about 40 minutes on this task. Write about the following topic:</p>
                 <div className="border px-4 py-2 bg-white font-semibold italic">
                 <p>
-                In their advertising, businesses nowadays usually emphasise that their 
-                products are new in some way. 
+                Many people now prefer to do their shopping online rather than visiting physical stores. Is this a positive or negative development?
                 </p>
-                <p>Why is this?</p>
-                <p>Do you think it is a positive or negative development?</p>
                 </div>
                 <p>
                 Give reasons for your answer and include any relevant examples from your own 

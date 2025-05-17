@@ -1,9 +1,0 @@
-True/False/Not Given
-Multiple Choice
-Matching Information
-Matching Headings
-Summary Completion
-Sentence Completion
-Note, Table, Flow-chart Completion
-Diagram Label Completion
-Short Answer Questions
