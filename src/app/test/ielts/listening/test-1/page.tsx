@@ -62,13 +62,25 @@ const q19_20Keys: Record<string, string> = {
     'E. challenge yourself': 'E'
 };
 
-export default function ListeningTest1Page() {
+    type Question = {
+        number: number;
+        answer?: string;
+    }
+
+    type TestData = {
+        title: string;
+        questions: Question[];
+    }
+
+
+export default function ListeningTestPage() {
     const router = useRouter()
     const audioRef = useRef<HTMLAudioElement>(null)
+    const testId = 1;
     
     const [answers, setAnswers] = useState<Record<number, string | { options: string[], count: number }>>({})
     const [volume, setVolume] = useState(1)
-    const [highlighted, setHighlighted] = useState<Set<number>>(new Set())
+    const [highlighted] = useState<Set<number>>(new Set()) // Removed setHighlighted since it's unused
     const [testData, setTestData] = useState<TestData | null>(null)
     const [muted, setMuted] = useState(false)
     const [started, setStarted] = useState(false)
@@ -78,10 +90,7 @@ export default function ListeningTest1Page() {
     const [studentDatetime, setStudentDatetime] = useState('')
     const [submittingTest, setSubmittingTest] = useState(false)
     const [timeLeft, setTimeLeft] = useState(32 * 60) // 32 minutes
-    const [finalTime, setFinalTime] = useState<number | null>(null)
-    const [audioDuration, setAudioDuration] = useState<number | null>(null)
     const [audioError, setAudioError] = useState<string | null>(null)
-    const [showStartPrompt, setShowStartPrompt] = useState(true)
     const [selRect, setSelRect] = useState<{ top: number; left: number } | null>(null)
     
     // Handle answer changes
@@ -104,7 +113,7 @@ export default function ListeningTest1Page() {
                 return updated;
             });
         } else {
-        const safeVal: string = Array.isArray(val) ? val.join(', ') : val;
+            const safeVal: string = Array.isArray(val) ? val.join(', ') : val;
             setAnswers(prev => {
                 const updated = {
                     ...prev,
@@ -114,17 +123,6 @@ export default function ListeningTest1Page() {
                 return updated;
             });
         }
-    }
-
-    type Question = {
-        number: number;
-        answer?: string;
-        [key: string]: any;
-    }
-
-    type TestData = {
-        title: string;
-        questions: Question[];
     }
 
     useEffect(() => {
@@ -162,6 +160,16 @@ export default function ListeningTest1Page() {
 
     useEffect(() => {
         if (started && audioRef.current) {
+            audioRef.current.play()
+                .catch((error) => {
+                    console.error('Audio playback failed:', error);
+                    setAudioError('Failed to play the audio. Please check the audio file or browser permissions.');
+                });
+        }
+    }, [started])
+
+    useEffect(() => {
+        if (started && audioRef.current) {
             audioRef.current.play().catch(console.error)
         }
     }, [started])
@@ -170,12 +178,13 @@ export default function ListeningTest1Page() {
     const handlePlay = () => {
         if (audioRef.current) {
             const duration = 32 * 60 // 32 minutes (1920 seconds)
-            setAudioDuration(duration)
             setTimeLeft(duration)
-            setFinalTime(duration)
-            audioRef.current.play().catch(console.error)
+            audioRef.current.play()
+                .catch((error) => {
+                    console.error('Audio playback failed:', error);
+                    setAudioError('Failed to play the audio. Please check the audio file or browser permissions.');
+                });
             setStarted(true)
-            setShowStartPrompt(false)
         }
     }
 
@@ -184,26 +193,10 @@ export default function ListeningTest1Page() {
         if (audioRef.current) {
             audioRef.current.onloadedmetadata = () => {
                 const final = 32 * 60 // 32 minutes
-                setAudioDuration(final)
                 setTimeLeft(final)
-                setFinalTime(final)
             }
         }
     }, [audioRef])
-
-    const startAudio = () => {
-        if (audioRef.current) {
-            audioRef.current.muted = true
-            audioRef.current.play()
-                .then(() => {
-                    audioRef.current!.muted = false
-                    setAudioError(null)
-                })
-                .catch(() => {
-                    setAudioError('Failed to play audio. Please click the play button below.')
-                })
-        }
-    }
 
     // Lock Scroll When Blurred
     useEffect(() => {
@@ -261,8 +254,8 @@ export default function ListeningTest1Page() {
                 console.error('Failed to load logo:', error);
             }
 
-            const testNumber = testData?.title?.split(' ').pop() || '1';
-            const testTitle = `IELTS LISTENING TEST ${testNumber}`;
+            const testId = testData?.title?.split(' ').pop() || '1';
+            const testTitle = `IELTS LISTENING TEST ${testId}`;
 
             doc.setFontSize(14);
             doc.text(testTitle, 290, y, { align: 'center' });
@@ -374,7 +367,7 @@ export default function ListeningTest1Page() {
             }
 
             // Watermark on every page
-            const pageCount = (doc as any).internal.getNumberOfPages();
+            const pageCount = doc.getNumberOfPages();
             for (let i = 1; i <= pageCount; i++) {
                 doc.setPage(i);
                 doc.setTextColor(200);
@@ -525,18 +518,6 @@ export default function ListeningTest1Page() {
         }
     }
 
-    const toggleHighlight = (qnum: number) => {
-        setHighlighted(prev => {
-            const newSet = new Set(prev);
-            if (newSet.has(qnum)) {
-                newSet.delete(qnum);
-            } else {
-                newSet.add(qnum);
-            }
-            return newSet;
-        })
-    }  
-
     return (
         <div className="relative w-full h-full" onMouseUp={onMouseUp}>
         {!started && <div className="absolute inset-0 backdrop-blur-sm z-10" />}
@@ -595,7 +576,7 @@ export default function ListeningTest1Page() {
 
         {/* HEADER */}
         <header className="fixed top-0 left-0 w-full bg-amber-50 py-2 px-4 z-50 flex items-center justify-between border">
-            <h1 className="text-lg font-bold">IELTS Listening Test 1</h1>
+            <h1 className="text-lg font-bold">IELTS Listening Test {testId}</h1>
             <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-1">
                 <ClockIcon className="w-6 h-6 text-orange-500" />
                 <span className="text-lg font-semibold text-orange-500">
