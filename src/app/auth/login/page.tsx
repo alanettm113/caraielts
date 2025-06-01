@@ -95,7 +95,8 @@ export default function LoginPage() {
                 Sign In
             </button>
             </form>
-            <div className="text-center text-sm mt-4">
+            {/*Forgot Password? & Register*/}
+            {/*<div className="text-center text-sm mt-4">
             <Link href="/auth/forgot-password" className="text-amber-500 hover:underline">
                 Forgot Password?
             </Link>
@@ -103,7 +104,7 @@ export default function LoginPage() {
             <Link href="/auth/register" className="text-amber-500 hover:underline">
                 Register
             </Link>
-            </div>
+            </div>*/}
         </div>
         </div>
     );
